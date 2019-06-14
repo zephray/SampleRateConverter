@@ -202,6 +202,17 @@ FIR_Filter* src_generate_fir_filter(float* coefficients, int num_taps,
     return filter;
 }
 
+// Generate a filter
+FIR_Filter* src_generate(int interpolation, int decimation) {
+    int num_taps = 24;
+    float cutoff_freq = 0.5;
+    float* coefficients = src_generate_fir_coeffs(num_taps, cutoff_freq);
+    FIR_Filter* filter = src_generate_fir_filter(coefficients, num_taps, 
+            interpolation, decimation);
+    free(coefficients);
+    return filter;
+}
+
 // Filt incoming sample block
 int src_filt(FIR_Filter* filter, float* samples, int count, 
         float* output) {

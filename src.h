@@ -62,6 +62,7 @@ typedef struct {
 float* src_generate_fir_coeffs(int num_taps, float cutoff);
 FIR_Filter* src_generate_fir_filter(float* coefficients, int num_taps,
         int interpolation, int decimation);
+FIR_Filter* src_generate(int interpolation, int decimation);
 int src_filt(FIR_Filter* filter, float* samples, int count, float* p_output);
 
 #ifdef __cplusplus
