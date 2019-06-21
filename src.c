@@ -205,7 +205,7 @@ FIR_Filter* src_generate_fir_filter(float* coefficients, int num_taps,
 // Generate a filter
 FIR_Filter* src_generate(int interpolation, int decimation) {
     int num_taps = 24;
-    float cutoff_freq = 0.5;
+    float cutoff_freq = 0.5 / num_taps;
     float* coefficients = src_generate_fir_coeffs(num_taps, cutoff_freq);
     FIR_Filter* filter = src_generate_fir_filter(coefficients, num_taps, 
             interpolation, decimation);
