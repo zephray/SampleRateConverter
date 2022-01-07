@@ -11,8 +11,8 @@ Simple 44.1kHz to 192kHz upsampler:
 // 44.1kHz * 640 / 147 = 192kHz
 FIR_Filter* filter = src_generate(640, 147); 
 ...
-float* input_buffer[IN_SIZE]; // Incoming stream
-float* output_buffer[IN_SIZE * 5]; // Outcoming stream
+float input_buffer[IN_SIZE]; // Incoming stream
+float output_buffer[IN_SIZE * 5]; // Outcoming stream
 int output_length = src_filt(filter, input_buffer, input_length, output_buffer);
 ```
 
@@ -29,8 +29,8 @@ FIR_Filter* filter_left = src_generate_fir_filter(coefficients, num_taps, interp
 FIR_Filter* filter_right = src_generate_fir_filter(coefficients, num_taps, interpolation, decimation);
 free(coefficients);
 ...
-float* input_buffer_left[IN_SIZE]; // Incoming stream
-float* output_buffer_left[IN_SIZE * interpolation / decimation + 1]; // Outcoming stream
+float input_buffer_left[IN_SIZE]; // Incoming stream
+float output_buffer_left[IN_SIZE * interpolation / decimation + 1]; // Outcoming stream
 int output_length = src_filt(filter_left, input_buffer, input_length, output_buffer);
 ...
 ```
